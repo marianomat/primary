@@ -8,8 +8,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Examen Primary',
   tagline: '',
-  url: 'https://github.com/marianomat/',
-  baseUrl: '/',
+  url: 'https://marianomat.github.io',
+  baseUrl: '/primary-exam/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',

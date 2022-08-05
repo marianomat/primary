@@ -122,50 +122,91 @@ Sirve para:
 Ambas comparten atributos como DNI, nombre pero por cuestiones de diseño se decide que nunca se instancia un objeto Persona directamente.
 Sino que sólo se instancian Empleados y Clientes.
 
-
-```py
-class Persona:
-  # Constructor de la clase
-  def __init__(self,nombre,DNI):
-    self.nombre = nombre
-    self.DNI = DNI
-    
-class Cliente(Persona):
-  deuda = 1000
-    
-class Empleado(Persona):
-    puesto = "Administrativo"
-```
-
-**Herencia multiple** consiste en que una clase pueda extender de multiples clases, esto en algunos lenguajes como Java no se permite pero en Python si.
+**Herencia multiple** consiste en que una clase pueda extender de multiples clases simultáneamente, esto en algunos lenguajes como Java no se permite pero en Python si.
 implementacion en Python:
 
 ```py
 
-class RecHumanos(Empleado,Valencia):
-  def saludo(self):
-    print("Hola, mi nombre es " + self.nombre + " y mi ID es " + self.iden + ".")
-    print("Trabajo en Recursos Humanos.")
-    print("Vivo en " + self.domicilio + ".")
+class Clase1(Clase2,Clase3):
+    pass
 ```
 
 
 ### 2) ¿Qué es, para qué sirve y cómo se implementan los métodos privados y públicos de las clases en Python?
 
 
- Los metodos publicos son funcionalidades que posee una clase los cuales pueden ser invocadas desde afuera del scope de la clase, por ejemplo en otra clase.
+ Los métodos públicos son funcionalidades que posee una clase los cuales pueden ser invocadas desde afuera del scope de la clase, por ejemplo en otra clase.
  
-Un metodo privado es aquel que solo puede ser llamado en la clase en la que se define.
+Un método privado es aquel que solo puede ser llamado en la clase en la que se define.
 
 En **python no existen distinciones entre private y public**, entonces para indicar que algo private se utiliza un "_" adelante del metodo o atributo.
  Para que el desarrollador sepa que se debe utilizar dentro de la clase. No hay nada que impida utilizarlo como si fuera publico pero es una mala practica.
 
 ### 3) ¿Cuál es la diferencia entre un tipo de dato list, set, tuple y dict? ¿En qué caso utilizaría cada una de ellas?
 
-todo
+* **List**: es una lista de elementos ordenados, pueden contener distintos tipos de datos. Útil cuando necesitamos un orden. Ejemplo: lista de precios que tuvo un producto en los últimos 2 años.
+  * Acceder: O(1)
+  * Buscar: O(N)
+  * Insertar: si agregamos al final es O(1), pero al inicio es O(N)
+  * Eliminar: si eliminamos al final es O(1), al inicio es O(N)
+* **Dict**: es una estructura de datos que se caracteriza por ser del formato llave - valor. No posee un orden. Útil cuando se necesita acceso, inserciones y eliminaciones rápidas. Ejemplo: para contener las características de un producto (precio, nombre, cantidad).
+  * Insertar O(1)
+  * Remover:; O(1)
+  * Buscar: O(N) _(se refiere a encontrar un determinado valor_)
+  * Acceder: O(1)
+* **Tuple**: una colección o agrupamiento de elementos. Es separado por comas como List, pero utiliza paréntesis en vez de corchetes. Su principal característica es que es inmutable, es decir, no se puede modificar. Pueden ser usadas como keys en los dict. Ejemplo: una tupla que contenga los meses del año.
+* **Set**: es una estructura de datos que utiliza la teoría de conjuntos (posee métodos para ver uniones, intersecciones). No posee elementos repetidos y no tiene un orden (no hay índice). Es útil para tener una coleccion de datos que no tienen orden, llaves o duplicados. Ejemplo: para saber cuáles productos se vendieron en un dia.
 
 
 ### 4) ¿Que es un decorator en Python? De un ejemplo de cómo utilizaría uno?
 
-todo
+Los decoradores son funciones que envuelven otras funciones para agregar o cambiar su funcionalidad. 
 
+Ejemplo sin utilizar decoradores: tenemos la función mi_nombre que sólo imprime en consola. 
+Pero si le agregamos la función de orden mayor ser_amable, ahora cuando se la invoque, va a imprimir las líneas de ser_amable.
+
+```py
+
+def ser_amable(fn):
+    def wrapper():
+        print("Hola mucho gusto!")
+        fn()
+        print("Hasta luego")
+    return wrapper
+    
+    
+def mi_nombre():
+    print("Me llamo Mariano")
+    
+mi_nombre = ser_amable(mi_nombre)
+
+mi_nombre()
+
+# Hola mucho gusto!
+# Me llamo Mariano
+# Hasta luego
+
+```
+
+Ejemplo con decoradores
+
+```py
+
+def ser_amable(fn):
+    def wrapper():
+        print("Hola mucho gusto!")
+        fn()
+        print("Hasta luego")
+    return wrapper
+    
+@ser_amable    
+def mi_nombre():
+    print("Me llamo Mariano")
+    
+mi_nombre()
+
+# Hola mucho gusto!
+# Me llamo Mariano
+# Hasta luego
+
+```

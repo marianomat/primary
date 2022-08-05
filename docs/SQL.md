@@ -7,7 +7,7 @@ sidebar_position: 3
 
 Sean los siguientes esquemas relacionales:
 
-![alt-text](https://i.imgur.com/N1lX2dF.png).
+![DER](https://i.imgur.com/N1lX2dF.png).
 
 
 La relación Empleado contiene datos de todos los empleados de la compañía, entre

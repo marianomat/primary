@@ -74,7 +74,7 @@ for i in range(len(arr)):
 ### Algoritmo
 
 ```py
-for i in range(total_length - 1):
+for i in range(total_length):
     min_num_list = []
     for j in range(len(arr)):
         if len(arr[j]) != arr_last_index[j]:
@@ -82,7 +82,9 @@ for i in range(total_length - 1):
     min_num = min(min_num_list)
     for j in range(len(arr)):
         if len(arr[j]) > arr_last_index[j] and min_num == arr[j][arr_last_index[j]]:
-            if arr_last_index[j] < len(arr[j]): arr_last_index[j] += 1
+            if arr_last_index[j] < len(arr[j]):
+                arr_last_index[j] += 1
+                break
     final_list.append(min_num)
 
 ```
